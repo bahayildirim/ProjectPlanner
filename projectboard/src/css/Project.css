@@ -1,0 +1,180 @@
+/* Font classes, excluding icons to prevent them from breaking */
+.league-spartan:not(.fa-solid) {
+    font-family: "League Spartan", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 24px;
+}
+
+.dosis {
+    font-family: "Dosis", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 18px;
+}
+
+
+/* Project Board Settings */
+.project {
+    display: flex;
+    flex-direction: row;
+}
+
+.board-container {
+    padding: 40px;
+    display: flex;
+    flex-direction: row;
+}
+
+.board + .board{
+    margin-left: 60px;
+}
+
+.board-header {
+    width: 260px;
+    height: 35px;
+    padding: 5px 10px;
+    background-color: var(--secondary-color-dark);
+    border-radius: 10px 10px 0 0;
+    color: white;
+    align-content: center;
+}
+
+.board-content {
+    width: 260px;
+    height: 90px;
+    padding: 10px 10px;
+    display: flex;
+    flex-direction: row;
+    /* Maintains width and height */
+    flex: 0 0 auto;
+}
+
+.board-content p {
+    width: 170px;
+    height: 90px;
+    text-wrap: wrap;
+}
+
+.board-tags {
+    width: 60px;
+    height: 95px;
+    padding: 0px 10px;
+    border-right: 1px solid var(--accent);
+    margin-right: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 5px;
+    row-gap: 5px;
+    /* Maintains width and height */
+    flex: 0 0 auto;
+}
+
+.content-a {
+    background-color: #FF8E7266
+}
+
+.content-b {
+    background-color: #FF8E7233
+}
+
+.board-footer {
+    width: 260px;
+    height: 20px;
+    padding: 5px 10px;
+    background-color: #EB554780;
+    border-radius: 0 0 10px 10px;
+    color: white;
+    align-content: center;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.board-footer i {
+    color: var(--accent);
+    font-size: 16px;
+}
+
+.board-footer i + i {
+    margin-right: 16px;
+}
+
+.board-new {
+    width: 260px;
+    height: 35px;
+    padding: 5px 10px;
+    background-color: var(--secondary-color-dark);
+    border-radius: 10px;
+    color: white;
+    align-content: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.board-new p {
+    align-content: center;
+}
+
+.board-new i {
+    align-content: center;
+    font-size: 24px;
+}
+
+/* Sidebar Settings */
+aside {
+    padding: 30px 20px;
+    /* Scales with viewport */
+    height: 100em;
+    width: 160px;
+    background-color: #EB5547cc;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 40px;
+}
+
+/* Button Settings */
+aside button {
+    background: none;
+    border: none;
+    border-bottom: 1px solid black;
+    padding-bottom: 15px;
+    width: 160px;
+    text-align: left;
+}
+
+.sidebar-top {
+    margin-left: 10px;
+}
+
+aside .dropdown-content i {
+    margin-right: 10px;
+}
+
+aside button:hover {
+    cursor: pointer;
+}
+
+/* Dropdown Settings */
+
+aside .dropdown {
+    position: relative;
+}
+
+
+aside .dropdown-content {
+    display: none;
+    flex-direction: column;
+    
+}
+
+aside .dropdown-content li button {
+    width: 160px;
+    height: 50px;
+    font-size: 18px !important;
+    text-align: left;
+    line-height: 50px;
+    border-bottom: 0 solid black;
+}

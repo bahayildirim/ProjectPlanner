@@ -1,0 +1,77 @@
+/* Font settings for the nav element, excluding icons to prevent them from breaking */
+nav.league-spartan-nav *:not(.fa-solid) {
+    font-family: "League Spartan", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
+
+/* Special settings for left side text */
+.league-spartan-nav p {
+    color: white;
+    font-size: 24px;
+}
+
+/* General navbar settings */
+nav {
+    width: auto;
+    height: 60px;
+    background-color: var(--secondary-color-dark);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+/* Margin between buttons, only works for li elements starting from the 2nd */
+nav li + li {
+    margin-left: 30px;
+}
+
+/* Button Settings */
+nav button {
+    width: 120px;
+    height: 50px;
+    background-color: var(--accent);
+    color: white;
+    border-width: 0px;
+    transition: 0.5s;
+    font-size: 18px;
+    vertical-align: middle;
+}
+
+nav button i {
+    margin-left: 10px;
+}
+
+nav button:hover {
+    background-color: #9e473a;
+    cursor: pointer;
+}
+
+/* Dropdown Settings */
+nav .dropdown {
+    position: relative;
+}
+
+
+nav .dropdown-content {
+    /* TODO: JavaScript to show/hide dropdown */
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    left: 0; /* Aligns left edge with .dropdown */
+    z-index: 1; /* Makes it stay on top */
+}
+
+nav .dropdown-content a {
+    width: 120px;
+    height: 50px;
+    background-color: #9e473a;
+    color: white;
+    border-width: 0px;
+    font-size: 18px;
+    align-content: center;
+    text-align: center;
+    border-top: 2px solid black;
+}                     

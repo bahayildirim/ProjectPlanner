@@ -1,0 +1,21 @@
+* {
+    margin: 0;
+    padding: 0;
+
+}
+
+body {
+    overflow: hidden; /* Prevents scrolling when overflow happens, use overflow: auto in child containers to allow scrolling within container */
+}
+
+/* Removes the dot at the beginning of li elements */
+li {
+    display: inline;
+}
+
+:root {
+    --primary-color: #ffffff;
+    --secondary-color-dark: #EB5547;
+    --secondary-color-light: #FF8E72;
+    --accent: #861909;
+}
