@@ -15,7 +15,7 @@ nav.league-spartan-nav *:not(.fa-solid) {
 /* General navbar settings */
 nav {
     width: auto;
-    height: 60px;
+    height: 80px;
     background-color: var(--secondary-color-dark);
     display: flex;
     align-items: center;

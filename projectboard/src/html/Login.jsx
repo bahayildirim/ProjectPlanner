@@ -12,11 +12,9 @@ function Login() {
             <div className="login">
                 <h1>Login</h1>
                 <form method="post" onSubmit={formToJSON.bind(null, "http://localhost:5200/login", 'POST')}>
-                    <label htmlFor="username">Username: </label>
-                    <input type="text" name="username" id="username" required />
+                    <input type="text" placeholder="Username" name="username" id="username" required />
                     <br />
-                    <label htmlFor="password">Password: </label>
-                    <input type="password" name="password" id="password" required />
+                    <input type="password" placeholder="Password" name="password" id="password" required />
                     <br />
                     <button type="submit">Login</button>
                     <br />

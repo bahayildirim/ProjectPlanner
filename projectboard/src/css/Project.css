@@ -33,8 +33,8 @@
 }
 
 .board-header {
-    width: 260px;
-    height: 35px;
+    width: 280px;
+    height: 45px;
     padding: 5px 10px;
     background-color: var(--secondary-color-dark);
     border-radius: 10px 10px 0 0;
@@ -43,8 +43,8 @@
 }
 
 .board-content {
-    width: 260px;
-    height: 90px;
+    width: 280px;
+    height: 110px;
     padding: 10px 10px;
     display: flex;
     flex-direction: row;
@@ -59,7 +59,7 @@
 }
 
 .board-tags {
-    width: 60px;
+    width: 80px;
     height: 95px;
     padding: 0px 10px;
     border-right: 1px solid var(--accent);
@@ -81,8 +81,8 @@
 }
 
 .board-footer {
-    width: 260px;
-    height: 20px;
+    width: 280px;
+    height: 30px;
     padding: 5px 10px;
     background-color: #EB554780;
     border-radius: 0 0 10px 10px;
@@ -102,8 +102,8 @@
 }
 
 .board-new {
-    width: 260px;
-    height: 35px;
+    width: 280px;
+    height: 45px;
     padding: 5px 10px;
     background-color: var(--secondary-color-dark);
     border-radius: 10px;
@@ -127,7 +127,7 @@ aside {
     padding: 30px 20px;
     /* Scales with viewport */
     height: 100em;
-    width: 160px;
+    width: 200px;
     background-color: #EB5547cc;
     display: flex;
     flex-direction: column;

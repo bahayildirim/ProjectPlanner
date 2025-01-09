@@ -1,17 +1,23 @@
+/* Font settings for the login element, excluding icons to prevent them from breaking */
+nav.league-spartan-nav *:not(.fa-solid) {
+    font-family: "League Spartan", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
+
 .login * {
     text-align: center;
-    background-color: var(--extra-color);
     margin-top: 20px;
     font-size: 23px;
 }
 
 .login-cont {
     margin: 100px auto 0;
-    padding: 50px;
-    background-color: var(--extra-color);
-    max-width: fit-content;
-    max-height: fit-content;
-    border-radius: 10px;
+    padding: 30px 50px;
+    background-color: var(--secondary-color-dark);
+    width: 504px;
+    height: 615px;
 }
 
 .login h1 {
