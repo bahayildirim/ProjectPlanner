@@ -1,63 +1,72 @@
 /* Font settings for the login element, excluding icons to prevent them from breaking */
-nav.league-spartan-nav *:not(.fa-solid) {
+.league-spartan-login:not(.fa-solid) {
     font-family: "League Spartan", sans-serif;
     font-optical-sizing: auto;
     font-weight: 600;
     font-style: normal;
 }
 
+.dosis-login {
+    font-family: "Dosis", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+/* Login Settings */
 .login * {
     text-align: center;
-    margin-top: 20px;
-    font-size: 23px;
+    margin-top: 40px;
+    font-size: 24px;
+    color: white;
+}
+
+.login form {
+    margin-top: 0;
+}
+
+.login button {
+    width: 180px;
+    height: 70px;
+    background-color: var(--accent);
+    color: white;
+    border-width: 0px;
+    transition: 0.5s;
+    font-size: 30px;
+}
+
+.login button:hover {
+    background-color: #9e473a;
+    cursor: pointer;
 }
 
 .login-cont {
     margin: 100px auto 0;
-    padding: 30px 50px;
+    padding: 40px 50px;
     background-color: var(--secondary-color-dark);
     width: 504px;
     height: 615px;
 }
 
 .login h1 {
-    color: var(--primary-color);
-    font-weight: 600;
-    margin-bottom: 60px;
-    font-size: 60px;
+    font-size: 40px;
+    width: 100%;
+    text-wrap: nowrap;
+    margin-top: 0;
 }
 
-.login label {
-    font-weight: 500;
-    font-size: 30px;
+.login a {
+    color: var(--accent);
 }
 
 .login input {
-    width: 200px;
-    height: 40px;
-    border-radius: 10px;
-    border-width: 3px;
-    border-color: var(--primary-color);
-    background-color: var(--background-color);
-    font-size: 23px;
-    transition: 0.5s;
+    width: 100%;
+    height: 50px;
+    text-align: left;
+    padding: 5px 10px;
+    color: black;
 }
 
-.login button[type="submit"] {
-    width: 100px;
-    height: 40px;
-    border-color: var(--primary-color);
-    background-image: linear-gradient(60deg, var(--primary-color), var(--secondary-color) 55%);
-    transition: 0.5s;
-    border-radius: 10px;
-    border-width: 3px;
-    border-color: var(--primary-color);
-}
-
-.login button[type="submit"]:hover {
-    opacity: 0.8;
-}
-
-.login input:hover {
-    background-color: rgba(224, 224, 224, 0.7);
+.error-login {
+    color: var(--accent)
 }

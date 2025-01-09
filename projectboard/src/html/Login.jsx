@@ -10,16 +10,13 @@ function Login() {
     return (
         <div className="login-cont">
             <div className="login">
-                <h1>Login</h1>
+                <h1 className="league-spartan-login">Login to Project Planner</h1>
                 <form method="post" onSubmit={formToJSON.bind(null, "http://localhost:5200/login", 'POST')}>
-                    <input type="text" placeholder="Username" name="username" id="username" required />
-                    <br />
-                    <input type="password" placeholder="Password" name="password" id="password" required />
-                    <br />
-                    <button type="submit">Login</button>
-                    <br />
-                    <br />
-                    <p>Don't have an account? <a href="/register">Create Account</a></p>
+                    <input className="dosis-login" type="text" placeholder="Username" name="username" id="username" required />
+                    <input className="dosis-login" type="password" placeholder="Password" name="password" id="password" required />
+                    <button className="league-spartan-login" type="submit">Login</button>
+                    <p className="dosis-login">Don't have an account? Register <a href="/register">here</a></p>
+                    <p className="league-spartan-login error-login">Wrong username/password. Please try again.</p>
                 </form>
             </div>
         </div>
