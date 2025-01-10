@@ -16,7 +16,7 @@
 /* Login Settings */
 .login * {
     text-align: center;
-    margin-top: 40px;
+    margin-top: 30px;
     font-size: 24px;
     color: white;
 }
@@ -42,7 +42,7 @@
 
 .login-cont {
     margin: 100px auto 0;
-    padding: 40px 50px;
+    padding: 30px 50px;
     background-color: var(--secondary-color-dark);
     width: 504px;
     height: 615px;
@@ -55,7 +55,7 @@
     margin-top: 0;
 }
 
-.login a {
+.login a, .error-login {
     color: var(--accent);
 }
 
@@ -65,8 +65,4 @@
     text-align: left;
     padding: 5px 10px;
     color: black;
-}
-
-.error-login {
-    color: var(--accent)
 }

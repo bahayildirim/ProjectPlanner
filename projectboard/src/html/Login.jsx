@@ -11,7 +11,7 @@ function Login() {
         <div className="login-cont">
             <div className="login">
                 <h1 className="league-spartan-login">Login to Project Planner</h1>
-                <form method="post" onSubmit={formToJSON.bind(null, "http://localhost:5200/login", 'POST')}>
+                <form method="get" onSubmit={formToJSON.bind(null, "http://localhost:5200/login", 'GET')}>
                     <input className="dosis-login" type="text" placeholder="Username" name="username" id="username" required />
                     <input className="dosis-login" type="password" placeholder="Password" name="password" id="password" required />
                     <button className="league-spartan-login" type="submit">Login</button>

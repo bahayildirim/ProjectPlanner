@@ -1,59 +1,68 @@
-.register-cont {
-    margin: 100px auto 0;
-    padding: 50px;
-    background-color: var(--extra-color);
-    border-radius: 10px;
-    max-width: fit-content;
-    max-height: fit-content;
+/* Font settings for the register element, excluding icons to prevent them from breaking */
+.league-spartan-register:not(.fa-solid) {
+    font-family: "League Spartan", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
 }
 
+.dosis-register {
+    font-family: "Dosis", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+/* register Settings */
 .register * {
-    margin-top: 20px;
-    font-size: 23px;
     text-align: center;
+    margin-top: 30px;
+    font-size: 24px;
+    color: white;
+}
+
+.register form {
+    margin-top: 0;
+}
+
+.register button {
+    width: 180px;
+    height: 70px;
+    background-color: var(--accent);
+    color: white;
+    border-width: 0px;
+    transition: 0.5s;
+    font-size: 30px;
+}
+
+.register button:hover {
+    background-color: #9e473a;
+    cursor: pointer;
+}
+
+.register-cont {
+    margin: 100px auto 0;
+    padding: 30px 50px;
+    background-color: var(--secondary-color-dark);
+    width: 504px;
+    height: 666px;
 }
 
 .register h1 {
-    color: var(--primary-color);
-    font-weight: 600;
-    margin-bottom: 60px;
-    font-size: 60px;
+    font-size: 40px;
+    width: 100%;
+    text-wrap: nowrap;
+    margin-top: 0;
 }
 
-.register label {
-    margin-top: 0px;
-    font-weight: 500;
-    font-size: 30px;
-    text-align: left;
+.register a, .error-register {
+    color: var(--accent);
 }
 
 .register input {
-    width: 200px;
-    height: 40px;
-    border-radius: 10px;
-    border-width: 3px;
-    border-color: var(--primary-color);
-    background-color: var(--background-color);
-    font-size: 23px;
-    transition: 0.5s;
-}
-
-.register button[type="submit"] {
-    width: fit-content;
-    height: fit-content;
-    padding: 10px;
-    border-color: var(--primary-color);
-    background-image: linear-gradient(60deg, var(--primary-color), var(--secondary-color) 55%);
-    transition: 0.5s;
-    border-radius: 10px;
-    border-width: 3px;
-    border-color: var(--primary-color);
-}
-
-.register button[type="submit"]:hover {
-    opacity: 0.8;
-}
-
-.register input:hover {
-    background-color: rgba(224, 224, 224, 0.7);
+    width: 100%;
+    height: 50px;
+    text-align: left;
+    padding: 5px 10px;
+    color: black;
 }
