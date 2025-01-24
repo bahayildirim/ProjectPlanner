@@ -23,7 +23,7 @@ const options = {
 
 const sessionConnection = mysql.createConnection(options);
 const sessionStore = new MySQLStore({
-    expiration: 10800000,
+    expiration: 1000 * 60 * 60,
     createDatabaseTable: true,
     /*
     schema: {
@@ -41,11 +41,7 @@ app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
-    store: sessionStore,
-    cookie: {
-        secure: false,
-        maxAge: 600000
-    }
+    store: sessionStore
 }));
 
 module.exports = pool;

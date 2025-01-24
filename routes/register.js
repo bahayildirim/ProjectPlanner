@@ -14,9 +14,13 @@ router.use(function (req, res, next) {
 
 router.post("/", async (req, res) => {
     // Get registration info, then add it to database
-    const { username, email, password } = req.body;
-    await pool.query("INSERT INTO user VALUES(?, ?, ?)", [username, password, email]);
-    res.send("User registered successfully");
+    try {
+        const { username, email, password } = req.body;
+        await pool.query("INSERT INTO user VALUES(?, ?, ?)", [username, password, email]);
+        res.send("User registered successfully");
+    } catch(err) {
+        console.log(err)
+    }
 })
 
 module.exports = router;
