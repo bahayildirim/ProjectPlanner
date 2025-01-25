@@ -1,9 +1,8 @@
-const app = require("./helper/app.js");  // Shared app instance
-const home = require("./routes/home.js");
-const login = require("./routes/login.js");
-const register = require("./routes/register.js");
-const logout = require("./routes/logout.js");
-const db = require("./helper/db.js");
+import app from "./helper/app.js";
+import home from "./routes/home.js";
+import login from "./routes/login.js";
+import register from "./routes/register.js"; 
+import logout from "./routes/logout.js";
 
 const hostname = "127.0.0.1";
 const port = 5200;

@@ -1,8 +1,8 @@
-const mysql = require("mysql2");
-const app = require("./app.js");
+import mysql from "mysql2";
+import app from "./app.js";
 
 // Use .env file for variables
-const dotenv = require("dotenv");
+import dotenv from "dotenv";
 dotenv.config();
 
 // Database connection pool
@@ -14,8 +14,10 @@ const pool = mysql.createPool({
 }).promise();
 
 // Setup session and cookie middleware as well as session storage
-const session = require('express-session');
-const MySQLStore = require('express-mysql-session')(session);
+import session from "express-session";
+import expressMySQL from "express-mysql-session";
+
+const MySQLStore = expressMySQL(session);
 const options = {
     host: process.env.MYSQL_HOST,
     user: process.env.MYSQL_USER,
@@ -112,4 +114,4 @@ async function createTables() {
 
 createTables();
 
-module.exports = pool;
+export default pool;

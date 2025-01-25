@@ -1,6 +1,6 @@
-const express = require("express");
+import express from "express";
 const router = express.Router();
-const pool = require("../helper/db.js");
+import pool from "../helper/db.js";
 
 // Middleware to handle CORS requests
 /*
@@ -23,4 +23,4 @@ router.post("/", async (req, res) => {
     }
 })
 
-module.exports = router;
+export default router;

@@ -1,11 +1,14 @@
-const express = require("express");
+import express from "express";
 const router = express.Router();
-const pool = require("../helper/db.js");
+import pool from "../helper/db.js";
+import { decrypt } from "../helper/encryption.js";
 
 router.get("/", async (req, res) => {
     try {
         const { email, password } = req.body;
         const [login] = await pool.query("SELECT * FROM user WHERE email = ? AND password = ?", [email, password]);
+        console.log(login);
+        const loginDecrypted = decrypt(login);
     
         // Check if query returned empty array
         if (login.length == 0) {
@@ -19,4 +22,4 @@ router.get("/", async (req, res) => {
     }
 });
 
-module.exports = router;
+export default router;
