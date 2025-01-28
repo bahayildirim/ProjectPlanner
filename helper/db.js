@@ -70,10 +70,9 @@ async function createTables() {
     try {
         await pool.query(`
         CREATE TABLE IF NOT EXISTS user(
-            username VARCHAR(32) NOT NULL UNIQUE,
-            password VARCHAR(32) NOT NULL,
-            iv VARCHAR(32),
-            email VARCHAR(32) PRIMARY KEY   
+            username VARCHAR(32) UNIQUE NOT NULL,
+            password VARCHAR(100) NOT NULL,
+            email VARCHAR(100) PRIMARY KEY   
         )
         `);
         console.log("User table created");

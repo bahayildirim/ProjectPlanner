@@ -1,8 +1,7 @@
 import express from "express";
 const router = express.Router();
 import pool from "../helper/db.js";
-import { encrypt } from "../helper/encryption.js";
-import crypto from "crypto";
+import argon2 from "argon2";
 
 // Middleware to handle CORS requests
 /*
@@ -19,24 +18,13 @@ router.post("/", async (req, res) => {
     try {
         // Get variables from req body
         let { username, email, password } = req.body;
-        const iv = crypto.randomBytes(16);
 
-        // Create a dictionary with variables
-        let data = {
-            username: username,
-            email: email,
-            password: password,
-        }
+        // Hash sensitive information
+        password = await argon2.hash(password);
+        email = await argon2.hash(email);
 
-        // Encrypt variables
-        Object.entries(data).forEach((item) => {
-            console.log(item[0] + " " + item);
-            data[item[0]] = encrypt(item[1], iv);
-        }); 
-        console.log(data.username + " " + data.password + " " + iv +  " " + data.email);
-
-        // Insert encrypted info to database
-        await pool.query("INSERT INTO user VALUES(?, ?, ?, ?)", [data.username, data.password, iv.toString("hex"), data.email]);
+        // Insert hashed info to database
+        await pool.query("INSERT INTO user VALUES(?, ?, ?)", [username, password, email]);
         res.send("User registered successfully");
     } catch(err) {
         console.log(err)
