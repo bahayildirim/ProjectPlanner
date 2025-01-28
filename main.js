@@ -1,3 +1,4 @@
+import 'dotenv/config'
 import app from "./helper/app.js";
 import home from "./routes/home.js";
 import login from "./routes/login.js";

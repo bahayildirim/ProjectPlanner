@@ -1,10 +1,6 @@
 import mysql from "mysql2";
 import app from "./app.js";
 
-// Use .env file for variables
-import dotenv from "dotenv";
-dotenv.config();
-
 // Database connection pool
 const pool = mysql.createPool({
     host: process.env.MYSQL_HOST,
@@ -39,16 +35,19 @@ const sessionStore = new MySQLStore({
     }
 }, sessionConnection)
 
+// Create session
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true, // Set to false when done with testing
     store: sessionStore,
+    /*
     cookie: {
         secure: false, // Set to true when using https
         // httpOnly: true, // Cookie can only be accessed by HTTP requests
         maxAge: 600000 // 10 minutes
     }
+    */
 }));
 
 async function createTables() {
@@ -71,9 +70,10 @@ async function createTables() {
     try {
         await pool.query(`
         CREATE TABLE IF NOT EXISTS user(
-            username VARCHAR(25) NOT NULL,
-            password VARCHAR(50) NOT NULL,
-            email VARCHAR(50) PRIMARY KEY
+            username VARCHAR(32) NOT NULL UNIQUE,
+            password VARCHAR(32) NOT NULL,
+            iv VARCHAR(32),
+            email VARCHAR(32) PRIMARY KEY   
         )
         `);
         console.log("User table created");
@@ -99,6 +99,7 @@ async function createTables() {
     }
 
     // Create Admin table
+    /*
     try {
         await pool.query(`
         CREATE TABLE IF NOT EXISTS admin(
@@ -110,6 +111,7 @@ async function createTables() {
     } catch (error) {
         console.error("Error creating user table:", error);
     }
+    */
 }
 
 createTables();
