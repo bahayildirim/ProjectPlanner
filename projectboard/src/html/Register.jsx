@@ -1,33 +1,7 @@
 import "../css/Register.css";
-import BackgroundSetter from "../functions/BackgroundSetter.jsx";
 import formToJSON from "../functions/FormToJSON.jsx";
 
 const Register = () => {
-    BackgroundSetter();
-
-    /*
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const formData = new FormData(event.target);
-        const jsonData = Object.fromEntries(formData);
-
-        fetch("http://localhost:5200/register", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(jsonData),
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                console.log("Success:", data);
-            })
-            .catch((error) => {
-                console.error("Error:", error);
-            });
-    };
-    */
-
     return (
         <div className="register-cont">
             <div className="register">

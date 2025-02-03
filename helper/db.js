@@ -39,7 +39,7 @@ const sessionStore = new MySQLStore({
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitialized: true, // Set to false when done with testing
+    saveUninitialized: false, // Set to false when done with testing
     store: sessionStore,
     /*
     cookie: {

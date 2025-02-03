@@ -1,10 +1,7 @@
 import "../css/Login.css";
-import BackgroundSetter from "../functions/BackgroundSetter.jsx";
 import formToJSON from "../functions/FormToJSON.jsx";
 
 function Login() {
-    BackgroundSetter();
-
     return (
         <div className="login-cont">
             <div className="login">

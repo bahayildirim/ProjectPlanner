@@ -13,7 +13,7 @@ router.get("/", async (req, res) => {
 
         // Check if hashed information matches with the database
         if (await argon2.verify(login[0].email, email) && await argon2.verify(login[0].password, password)) {
-            req.session.email = email;
+            req.session.isAuth = true;
             res.send("Logged in");
         } else {
             // If nothing is found

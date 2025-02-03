@@ -1,15 +1,17 @@
 import express from "express";
 const router = express.Router();
+import pool from "../helper/db.js";
 
 router.get("/", async (req, res) => {
     try {
-        // End session
-        req.session.destroy()
-        res.send("Logged out");
-        
+        if(req.session.isAuth) {
+            res.send(true)
+        } else {            
+            res.send(false);
+        }
     } catch(err) {
         console.log(err);
     }
-});
+})
 
 export default router;

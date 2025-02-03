@@ -1,7 +1,22 @@
 import "../css/Project.css";
+import { useEffect } from "react";
 import {DropdownShow} from "../functions/Dropdown.jsx";
+import SessionAuth from "../functions/SessionAuth.jsx";
+import { useNavigate } from "react-router-dom";
 
 const Project = () => {
+    // Create navigate function
+    let navigate = useNavigate();
+
+    // Run before render
+    useEffect(() => {
+        // Check for authentication before loading, redirect to login page if not authenticated
+        SessionAuth().then(response => {
+            if(!response) {
+                navigate("/login");
+            }
+        }) 
+    })
     return (
         <div className="project">
             <aside>
