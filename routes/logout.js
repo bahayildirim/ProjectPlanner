@@ -4,7 +4,7 @@ const router = express.Router();
 router.get("/", async (req, res) => {
     try {
         // End session
-        req.session.destroy()
+        res.clearCookie("sessionID");
         res.send("Logged out");
         
     } catch(err) {

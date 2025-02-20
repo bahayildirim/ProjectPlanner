@@ -5,6 +5,11 @@ import register from "./routes/register.js";
 import logout from "./routes/logout.js";
 import project from "./routes/project.js";
 import auth from "./routes/auth.js";
+import "./helper/session.js";
+
+// Parse cookies
+import cookieParser from 'cookie-parser';
+app.use(cookieParser());
 
 const hostname = "127.0.0.1";
 const port = 5200;
