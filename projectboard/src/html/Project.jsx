@@ -1,5 +1,5 @@
 import "../css/Project.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {DropdownShow} from "../functions/Dropdown.jsx";
 import SessionAuth from "../functions/SessionAuth.jsx";
 import { useNavigate } from "react-router-dom";
@@ -9,18 +9,73 @@ const Project = () => {
     let navigate = useNavigate();
 
     // Variable to show/hide page
-    let authenticated = false;
+    let [authenticated, setAuthenticated] = useState(false);
     // Run before render
     useEffect(() => {
         // Check for authentication before loading, redirect to login page if not authenticated
         SessionAuth().then(response => {
-            if(!response) {
-                navigate("/login");
+            if(response) {
+                setAuthenticated(true);
             } else {
-                authenticated = true;
+                navigate("/login");
             }
         }) 
     })
+
+    function Card() {
+        return (
+            <div className="board">
+                <div className="board-header league-spartan">
+                    <p>Title</p>
+                </div>
+                <div className="board-content content-a">
+                    <div className="board-tags">
+                        <i className="fa-solid fa-circle"></i>
+                        <i className="fa-solid fa-circle"></i>
+                        <i className="fa-solid fa-circle"></i>
+                        <i className="fa-solid fa-circle"></i>
+                        <i className="fa-solid fa-circle"></i>
+                        <i className="fa-solid fa-circle"></i>
+                        <i className="fa-solid fa-circle"></i>
+                        <i className="fa-solid fa-circle"></i>
+                        <i className="fa-solid fa-circle"></i>
+                        <i className="fa-solid fa-circle"></i>
+                        <i className="fa-solid fa-circle"></i>
+                    </div>
+                    <p className="dosis" contentEditable="true">Tesasdasdadssadasdasdasdasdadasdsadadadasdadasdsadasdsadadssadaaasdadasdadasdasdt</p>
+                </div>
+                <div className="board-content content-b">
+                    <div className="board-tags">
+                        <i className="fa-solid fa-circle"></i>
+                        <i className="fa-solid fa-circle"></i>
+                        <i className="fa-solid fa-circle"></i>
+                    </div>
+                    <p className="dosis" contentEditable="true">Test</p>
+                </div>
+                <div className="board-footer">
+                    <i className="fa-solid fa-plus"></i><i className="fa-solid fa-ellipsis"></i>
+                </div>
+            </div>
+        )
+    }
+
+    function List({title}) {
+        return (
+            <div className="board-header league-spartan">
+                <p>{title}</p>
+                <Card />
+            </div>
+        )
+    }
+
+    function NewList() {
+        return (
+            <div className="board board-new">
+                <p className="league-spartan">New Board</p><i className="fa-solid fa-plus"></i>
+            </div>
+        )
+    }
+
     if(authenticated) {
         return (
             <div className="project">

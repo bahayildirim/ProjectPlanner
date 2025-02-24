@@ -9,10 +9,11 @@ async function SessionAuth() {
         }
     });
 
-    // Convert to JSON
-    const auth = await response.json();
+    // Convert to text
+    const auth = await response.text();
 
-    return auth;
+    // Convert back into bool
+    return auth === 'true';
 }
 
 export default SessionAuth;
