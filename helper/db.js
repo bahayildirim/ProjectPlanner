@@ -38,21 +38,37 @@ async function createTables() {
         console.error("Error creating user table:", error);
     }
 
-    // Create Project table
+    // Create Board table
     try {
         await pool.query(`
-        CREATE TABLE IF NOT EXISTS project(
-            name VARCHAR(50) NOT NULL,
-            description VARCHAR(50),
-            startdate DATE,
-            enddate DATE,
-            user_email VARCHAR(50),
-            FOREIGN KEY (user_email) REFERENCES user(email)
+        CREATE TABLE IF NOT EXISTS board(
+            title VARCHAR(50) NOT NULL,
+            board_order INT NOT NULL,
+            board_user VARCHAR(50) NOT NULL,
+            FOREIGN KEY (board_user) REFERENCES user(username) ON DELETE CASCADE,
+            UNIQUE(board_user, board_order)
         )
         `);
-        console.log("Project table created");
+        console.log("Board table created");
     } catch (error) {
-        console.error("Error creating user table:", error);
+        console.error("Error creating board table:", error);
+    }
+
+    // Create Card table
+    try {
+        await pool.query(`
+        CREATE TABLE IF NOT EXISTS card(
+            text VARCHAR(50),
+            board_name VARCHAR(50) NOT NULL,
+            card_order INT NOT NULL,
+            card_user VARCHAR(50) NOT NULL,
+            FOREIGN KEY (card_user) REFERENCES board(board_user) ON DELETE CASCADE,
+            UNIQUE(card_user, board_name, card_order)
+        )
+        `);
+        console.log("Card table created");
+    } catch (error) {
+        console.error("Error creating card table:", error);
     }
 
     // Create Admin table

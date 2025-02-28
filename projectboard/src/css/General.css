@@ -19,3 +19,7 @@ li {
     --secondary-color-light: #FF8E72;
     --accent: #861909;
 }
+
+.fa-plus {
+    cursor: pointer;
+}

@@ -3,7 +3,9 @@ import { useEffect, useState } from "react";
 import {DropdownShow} from "../functions/Dropdown.jsx";
 import SessionAuth from "../functions/SessionAuth.jsx";
 import { useNavigate } from "react-router-dom";
-
+import Board from "../functions/Board.jsx";
+import NewBoard from "../functions/NewBoard.jsx";
+    
 const Project = () => {
     // Create navigate function
     let navigate = useNavigate();
@@ -21,60 +23,6 @@ const Project = () => {
             }
         }) 
     })
-
-    function Card() {
-        return (
-            <div className="board">
-                <div className="board-header league-spartan">
-                    <p>Title</p>
-                </div>
-                <div className="board-content content-a">
-                    <div className="board-tags">
-                        <i className="fa-solid fa-circle"></i>
-                        <i className="fa-solid fa-circle"></i>
-                        <i className="fa-solid fa-circle"></i>
-                        <i className="fa-solid fa-circle"></i>
-                        <i className="fa-solid fa-circle"></i>
-                        <i className="fa-solid fa-circle"></i>
-                        <i className="fa-solid fa-circle"></i>
-                        <i className="fa-solid fa-circle"></i>
-                        <i className="fa-solid fa-circle"></i>
-                        <i className="fa-solid fa-circle"></i>
-                        <i className="fa-solid fa-circle"></i>
-                    </div>
-                    <p className="dosis" contentEditable="true">Tesasdasdadssadasdasdasdasdadasdsadadadasdadasdsadasdsadadssadaaasdadasdadasdasdt</p>
-                </div>
-                <div className="board-content content-b">
-                    <div className="board-tags">
-                        <i className="fa-solid fa-circle"></i>
-                        <i className="fa-solid fa-circle"></i>
-                        <i className="fa-solid fa-circle"></i>
-                    </div>
-                    <p className="dosis" contentEditable="true">Test</p>
-                </div>
-                <div className="board-footer">
-                    <i className="fa-solid fa-plus"></i><i className="fa-solid fa-ellipsis"></i>
-                </div>
-            </div>
-        )
-    }
-
-    function List({title}) {
-        return (
-            <div className="board-header league-spartan">
-                <p>{title}</p>
-                <Card />
-            </div>
-        )
-    }
-
-    function NewList() {
-        return (
-            <div className="board board-new">
-                <p className="league-spartan">New Board</p><i className="fa-solid fa-plus"></i>
-            </div>
-        )
-    }
 
     if(authenticated) {
         return (
@@ -97,73 +45,9 @@ const Project = () => {
                     </div> 
                 </aside>
                 <div className="board-container">
-                    <div className="board">
-                        <div className="board-header league-spartan">
-                            <p>Title</p>
-                        </div>
-                        <div className="board-content content-a">
-                            <div className="board-tags">
-                                <i className="fa-solid fa-circle"></i>
-                                <i className="fa-solid fa-circle"></i>
-                                <i className="fa-solid fa-circle"></i>
-                                <i className="fa-solid fa-circle"></i>
-                                <i className="fa-solid fa-circle"></i>
-                                <i className="fa-solid fa-circle"></i>
-                                <i className="fa-solid fa-circle"></i>
-                                <i className="fa-solid fa-circle"></i>
-                                <i className="fa-solid fa-circle"></i>
-                                <i className="fa-solid fa-circle"></i>
-                                <i className="fa-solid fa-circle"></i>
-                            </div>
-                            <p className="dosis" contentEditable="true">Tesasdasdadssadasdasdasdasdadasdsadadadasdadasdsadasdsadadssadaaasdadasdadasdasdt</p>
-                        </div>
-                        <div className="board-content content-b">
-                            <div className="board-tags">
-                                <i className="fa-solid fa-circle"></i>
-                                <i className="fa-solid fa-circle"></i>
-                                <i className="fa-solid fa-circle"></i>
-                            </div>
-                            <p className="dosis" contentEditable="true">Test</p>
-                        </div>
-                        <div className="board-footer">
-                            <i className="fa-solid fa-plus"></i><i className="fa-solid fa-ellipsis"></i>
-                        </div>
-                    </div>
-                    <div className="board">
-                        <div className="board-header league-spartan">
-                            <p>Title</p>
-                        </div>
-                        <div className="board-content content-a">
-                            <div className="board-tags">
-                                <i className="fa-solid fa-circle"></i>
-                                <i className="fa-solid fa-circle"></i>
-                                <i className="fa-solid fa-circle"></i>
-                                <i className="fa-solid fa-circle"></i>
-                                <i className="fa-solid fa-circle"></i>
-                                <i className="fa-solid fa-circle"></i>
-                                <i className="fa-solid fa-circle"></i>
-                                <i className="fa-solid fa-circle"></i>
-                                <i className="fa-solid fa-circle"></i>
-                                <i className="fa-solid fa-circle"></i>
-                                <i className="fa-solid fa-circle"></i>
-                            </div>
-                            <p className="dosis" contenteditable="true">Tesasdasdadssadasdasdasdasdadasdsadadadasdadasdsadasdsadadssadaaasdadasdadasdasdt</p>
-                        </div>
-                        <div className="board-content content-b">
-                            <div className="board-tags">
-                                <i className="fa-solid fa-circle"></i>
-                                <i className="fa-solid fa-circle"></i>
-                                <i className="fa-solid fa-circle"></i>
-                            </div>
-                            <p className="dosis" contentEditable="true">Test</p>
-                        </div>
-                        <div className="board-footer">
-                            <i className="fa-solid fa-plus"></i><i className="fa-solid fa-ellipsis"></i>
-                        </div>
-                    </div>
-                    <div className="board board-new">
-                        <p className="league-spartan">New Board</p><i className="fa-solid fa-plus"></i>
-                    </div>
+                    <Board title="Board 1"/>
+                    <Board title="Board 2"/>
+                    <NewBoard />
                 </div>
             </div>
         );
