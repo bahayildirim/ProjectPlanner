@@ -20,6 +20,6 @@ li {
     --accent: #861909;
 }
 
-.fa-plus {
+.fa-plus, .fa-ellipsis {
     cursor: pointer;
 }

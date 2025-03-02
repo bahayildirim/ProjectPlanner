@@ -4,9 +4,15 @@ import pool from "../helper/db.js";
 
 router.get("/getboards", async (req, res) => {
     try {
-        const [login] = await pool.query("SELECT email, password FROM user WHERE username = ?", [username]);
+        // Get user from cookies
+        const user = req.cookies.user;
+
+        // Get user's boards
+        const [data] = await pool.query("SELECT * FROM board WHERE board_user = ? ORDER BY board_order ASC", [user]);
+        res.send(data);
     } catch(err) {
         console.log(err);
+        res.status(404).send();
     }
 })
 
@@ -25,7 +31,7 @@ router.post("/addboard", async (req, res) => {
         const user = req.cookies.user;
         
         // Add to database with "New Board" as its name
-        await pool.query("INSERT INTO board (title, board_order, board_user) VALUES (?, ?, ?)", ["New Board", order, user]);
+        await pool.query("INSERT INTO board (title, board_order, board_user) VALUES (?, ?, ?)", ["Board " + order, order, user]);
         res.send("Board added successfully");
     } catch(err) {
         console.log(err);

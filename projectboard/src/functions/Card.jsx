@@ -1,4 +1,17 @@
 function Card() {
+    function handleNewCard() {
+        fetch("http://127.0.0.1:5200/project/addcard", {
+            method: "POST",
+            credentials: "include",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                order: 1
+            })
+        })
+    }
+
     return (
         <div>
             <div className="board-content content-a">

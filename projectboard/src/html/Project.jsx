@@ -5,6 +5,7 @@ import SessionAuth from "../functions/SessionAuth.jsx";
 import { useNavigate } from "react-router-dom";
 import Board from "../functions/Board.jsx";
 import NewBoard from "../functions/NewBoard.jsx";
+import GetBoards from "../functions/GetBoards.jsx";
     
 const Project = () => {
     // Create navigate function
@@ -12,17 +13,22 @@ const Project = () => {
 
     // Variable to show/hide page
     let [authenticated, setAuthenticated] = useState(false);
+    let [boards, setBoards] = useState([]);
+
     // Run before render
     useEffect(() => {
         // Check for authentication before loading, redirect to login page if not authenticated
         SessionAuth().then(response => {
             if(response) {
                 setAuthenticated(true);
+                GetBoards().then(response => {
+                    setBoards(response);
+                })
             } else {
                 navigate("/login");
             }
         }) 
-    })
+    }, [])
 
     if(authenticated) {
         return (
@@ -45,8 +51,10 @@ const Project = () => {
                     </div> 
                 </aside>
                 <div className="board-container">
-                    <Board title="Board 1"/>
-                    <Board title="Board 2"/>
+                    {boards.map(board => {
+                       return <Board key={board.user + " " + board.order} title={board.title} />
+                    })
+                    }
                     <NewBoard />
                 </div>
             </div>

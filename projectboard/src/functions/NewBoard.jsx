@@ -7,7 +7,7 @@ function NewBoard() {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                order: 1
+                order: 3
             })
         })
     }
