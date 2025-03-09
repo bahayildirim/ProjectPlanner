@@ -35,7 +35,7 @@ async function createTables() {
         `);
         console.log("User table created");
     } catch (error) {
-        console.error("Error creating user table:", error);
+        console.error("Error creating User table:", error);
     }
 
     // Create Board table
@@ -51,24 +51,41 @@ async function createTables() {
         `);
         console.log("Board table created");
     } catch (error) {
-        console.error("Error creating board table:", error);
+        console.error("Error creating Board table:", error);
     }
 
     // Create Card table
     try {
         await pool.query(`
         CREATE TABLE IF NOT EXISTS card(
-            text VARCHAR(50),
-            board_name VARCHAR(50) NOT NULL,
+            text VARCHAR(700),
+            board_title VARCHAR(50) NOT NULL,
             card_order INT NOT NULL,
             card_user VARCHAR(50) NOT NULL,
+            tags VARCHAR(280),
             FOREIGN KEY (card_user) REFERENCES board(board_user) ON DELETE CASCADE,
             UNIQUE(card_user, board_name, card_order)
         )
         `);
         console.log("Card table created");
     } catch (error) {
-        console.error("Error creating card table:", error);
+        console.error("Error creating Card table:", error);
+    }
+
+    // Create Tag table
+    try {
+        await pool.query(`
+        CREATE TABLE IF NOT EXISTS tag(
+            name VARCHAR(20) NOT NULL,
+            color VARCHAR(7) NOT NULL,
+            tag_user VARCHAR(50) NOT NULL,
+            FOREIGN KEY (tag_user) REFERENCES user(username) ON DELETE CASCADE,
+            UNIQUE(tag_user, name)
+        )
+        `);
+        console.log("Tag table created");
+    } catch (error) {
+        console.error("Error creating Tag table:", error);
     }
 
     // Create Admin table

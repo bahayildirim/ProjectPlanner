@@ -5,13 +5,18 @@ import Router from './html/Router.jsx'
 import Navbar from './html/Navbar.jsx'
 import "./css/Navbar.css"
 import "./css/General.css"
+import { QueryClient,  QueryClientProvider} from '@tanstack/react-query'
+
+const queryClient = new QueryClient();
 
 // Main file for frontend, add HTML that'll be used by all pages like Navbar or required to navigate to them like Router
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Navbar />
-      <Router />
-    </BrowserRouter>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+          <Navbar />
+          <Router />
+      </BrowserRouter>
+    </QueryClientProvider>
   </React.StrictMode>
 )

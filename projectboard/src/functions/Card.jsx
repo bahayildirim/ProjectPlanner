@@ -1,48 +1,39 @@
-function Card() {
-    function handleNewCard() {
-        fetch("http://127.0.0.1:5200/project/addcard", {
-            method: "POST",
-            credentials: "include",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                order: 1
-            })
+import { useQuery } from "@tanstack/react-query";
+import GetCards from "./GetCards";
+import Tags from "./Tags";
+
+function Card({title}) {
+    const { status, data, error } = useQuery({
+        queryKey: ["cards", title],
+        queryFn: () => GetCards(title)
+    })
+
+    let contentClass;
+
+    // Render if fetch is complete
+
+    if(status === "success") {
+        return data.map((card, index) => {
+            // Different colors for each tab
+
+            if((index % 2) === 0) {
+                contentClass = "board-content content-a";
+            } else {
+                contentClass = "board-content content-b";
+            }
+            
+            return (
+                <div className={contentClass} key={title + " " + index}>
+                    <Tags tags={card.tags} />
+                    <p className="dosis" >{card.text}</p>
+                </div>
+            )
+
         })
     }
-
-    return (
-        <div>
-            <div className="board-content content-a">
-                <div className="board-tags">
-                    <i className="fa-solid fa-circle"></i>
-                    <i className="fa-solid fa-circle"></i>
-                    <i className="fa-solid fa-circle"></i>
-                    <i className="fa-solid fa-circle"></i>
-                    <i className="fa-solid fa-circle"></i>
-                    <i className="fa-solid fa-circle"></i>
-                    <i className="fa-solid fa-circle"></i>
-                    <i className="fa-solid fa-circle"></i>
-                    <i className="fa-solid fa-circle"></i>
-                    <i className="fa-solid fa-circle"></i>
-                    <i className="fa-solid fa-circle"></i>
-                </div>
-                <p className="dosis" contentEditable="true">Tesasdasdadssadasdasdasdasdadasdsadadadasdadasdsadasdsadadssadaaasdadasdadasdasdt</p>
-            </div>
-            <div className="board-content content-b">
-                <div className="board-tags">
-                    <i className="fa-solid fa-circle"></i>
-                    <i className="fa-solid fa-circle"></i>
-                    <i className="fa-solid fa-circle"></i>
-                </div>
-                <p className="dosis" contentEditable="true">Test</p>
-            </div>
-            <div className="board-footer">
-                <i className="fa-solid fa-plus"></i><i className="fa-solid fa-ellipsis"></i>
-            </div>
-        </div>
-    )
+    else {
+        return null;
+    }
 }
 
 export default Card;
