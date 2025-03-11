@@ -28,17 +28,21 @@ router.post("/getcards", async (req, res) => {
         res.send(data);
     } catch(err) {
         console.log(err);
+        res.status(404).send();
     }
 })
 
 router.post("/addboard", async (req, res) => {
     try {
-        // Get order from body and user from cookies
-        const order = req.body.order;
+        // Get user from cookies
         const user = req.cookies.user;
-        
+
+        // Get the current highest order
+        const [orderData] = await pool.query("SELECT MAX(board_order) AS highest_order FROM board WHERE board_user = ?", [user]);
+        const order = orderData[0].highest_order;
+     
         // Add to database with "New Board" as its name
-        await pool.query("INSERT INTO board (title, board_order, board_user) VALUES (?, ?, ?)", ["Board " + order, order, user]);
+        await pool.query("INSERT INTO board (title, board_order, board_user) VALUES (?, ?, ?)", ["Board " + (order + 1), order + 1, user]);
         res.send("Board added successfully");
     } catch(err) {
         console.log(err);
@@ -49,17 +53,20 @@ router.post("/addboard", async (req, res) => {
 router.post("/addcard", async (req, res) => {
     try {
         // Get card info from body and cookies
-        const order = req.body.order;
-        const text = req.body.text;
+        const text = "New Card";
         const user = req.cookies.user;
         const board_title = req.body.board_title;
+
+        // Get the current highest order
+        const [orderData] = await pool.query("SELECT MAX(card_order) AS highest_order FROM card WHERE card_user = ? AND board_title = ?", [user, board_title]);
+        const order = orderData[0].highest_order;
         
         // Add to database with "New Board" as its name
-        await pool.query("INSERT INTO card (text, board_title, card_order, card_user) VALUES (?, ?, ?, ?)", [text, board_title, order, user]);
+        await pool.query("INSERT INTO card (text, board_title, card_order, card_user) VALUES (?, ?, ?, ?)", [text, board_title, order + 1, user]);
         res.send("Card added successfully");
     } catch(err) {
         console.log(err);
-        res.status(404).send()
+        res.status(404).send();
     }
 })
 

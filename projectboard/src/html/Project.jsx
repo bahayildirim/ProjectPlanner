@@ -14,7 +14,11 @@ const Project = () => {
     // Variable to show/hide page
     let [authenticated, setAuthenticated] = useState(false);
     let [boards, setBoards] = useState([]);
-    let [allCards, getAllCards] = useState([]);
+    let [reRender, setReRender] = useState(false);
+
+    function forceRender() {
+        setReRender(!reRender);
+    }
 
     // Run before render
     useEffect(() => {
@@ -29,7 +33,7 @@ const Project = () => {
                 navigate("/login");
             }
         }) 
-    }, [])
+    }, [reRender])
 
     if(authenticated) {
         return (
@@ -53,10 +57,10 @@ const Project = () => {
                 </aside>
                 <div className="board-container">
                     {boards.map((board, index) => {
-                        return <Board key={board.board_user + " " + board.board_order} title={board.title} index={index}/>
+                        return <Board key={board.board_user + " " + board.board_order} title={board.title} index={index} renderFunc={forceRender}/>
                     })
                     }
-                    <NewBoard />
+                    <NewBoard renderFunc={forceRender}/>
                 </div>
             </div>
         );

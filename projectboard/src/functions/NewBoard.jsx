@@ -1,15 +1,14 @@
-function NewBoard() {
+function NewBoard({renderFunc}) {
     function handleNewBoard() {
         fetch("http://127.0.0.1:5200/project/addboard", {
             method: "POST",
             credentials: "include",
             headers: {
                 'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                order: 3
-            })
+            }
         })
+
+        renderFunc();
     }
 
     return (
