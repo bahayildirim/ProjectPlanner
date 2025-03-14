@@ -63,8 +63,8 @@ async function createTables() {
             card_order INT NOT NULL,
             card_user VARCHAR(50) NOT NULL,
             tags VARCHAR(280),
-            FOREIGN KEY (card_user) REFERENCES board(board_user) ON DELETE CASCADE,
-            UNIQUE(card_user, board_name, card_order)
+            FOREIGN KEY (card_user) REFERENCES board(board_user),
+            UNIQUE(card_user, board_title, card_order)
         )
         `);
         console.log("Card table created");

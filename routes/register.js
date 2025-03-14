@@ -25,9 +25,26 @@ router.post("/", async (req, res) => {
 
         // Insert hashed info to database
         await pool.query("INSERT INTO user VALUES(?, ?, ?)", [username, password, email]);
-        res.send("User registered successfully");
+
+        const [data] = pool.query("SELECT * FROM user WHERE email = ?", [email]);
+        console.log(data);
+
+        if(data) {
+            res.send("User registered successfully");
+        } else {
+            res.status(400).send("Error while registering");
+        }
+        
     } catch(err) {
-        console.log(err)
+        console.log(err);
+        if (err.code === "ER_DUP_ENTRY") {
+            res.status(409).send("User already exists"); // Conflict (For duplicate entries)
+        } else if (err.code === "ER_DATA_TOO_LONG") {
+            res.status(413).send("Username is too long"); // Content Too Large (For long username)
+        } else {
+            res.status(500).send("Internal Server Error"); // General error message
+        }
+
     }
 })
 

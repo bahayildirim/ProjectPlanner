@@ -1,10 +1,10 @@
 import { useState } from "react";
 import "../css/Login.css";
-import formToJSON from "../functions/FormToJSON.jsx";
 import { Navigate } from "react-router-dom";
 
 function Login() {
     const [loggedIn, setLoggedIn] = useState(false);
+    const [showError, setShowError] = useState(false);
 
     function handleLogin(event) {
         // Prevent page from reloading after submit
@@ -24,12 +24,14 @@ function Login() {
         })
         .then(response => response.text())
         .then(data => {
-            if(data === "Logged in") {
+            if(data === "User registered successfully") {
                 setLoggedIn(true);
                 console.log("Logged in");
+            } else {
+                setShowError(true);
             }
         })
-        .catch(error => console.error(error))    
+        .catch(error => console.log(error))    
     }
 
     if(loggedIn) {
@@ -45,7 +47,7 @@ function Login() {
                         <input className="dosis-login" type="password" placeholder="Password" name="password" id="password" required />
                         <button className="league-spartan-login" type="submit">Login</button>
                         <p className="dosis-login">Don't have an account? Register <a href="/register">here</a></p>
-                        <p className="league-spartan-login error-login">Wrong username/password. Please try again.</p>
+                        {showError === true && <p className="league-spartan-login error-login">Wrong username/password. Please try again.</p>}
                     </form>
                 </div>
             </div>
