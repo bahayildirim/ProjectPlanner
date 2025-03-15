@@ -1,4 +1,4 @@
-import DropdownShow from "../functions/Dropdown.jsx";
+import ToggleVisibility from "../functions/ToggleVisibility.jsx";
 
 function Navbar() {
     return (
@@ -6,9 +6,9 @@ function Navbar() {
             <p>Project Planner</p>
             <ul>
                 <li><button type="button">Projects</button></li>
-                <li className="dropdown">
-                    <button type="button" onClick={DropdownShow}>Account<i className="fa-solid fa-chevron-down"></i></button>
-                    <div className="dropdown-content" id="dropdownContent">
+                <li className="dropdown" id="dropdown">
+                    <button type="button" onClick={() => ToggleVisibility("dropdown", "flex")}>Account<i className="fa-solid fa-chevron-down"></i></button>
+                    <div className="dropdown-content hidden">
                         <a>Button 1</a>
                         <a>Button 2</a>
                         <a>Button 3</a>
