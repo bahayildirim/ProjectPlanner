@@ -1,6 +1,6 @@
 import "../css/Project.css";
 import { useEffect, useState } from "react";
-import {DropdownShow} from "../functions/Dropdown.jsx";
+import DropdownShow from "../functions/Dropdown.jsx";
 import SessionAuth from "../functions/SessionAuth.jsx";
 import { useNavigate } from "react-router-dom";
 import Board from "../functions/Board.jsx";

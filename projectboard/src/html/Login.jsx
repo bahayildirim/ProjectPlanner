@@ -24,9 +24,8 @@ function Login() {
         })
         .then(response => response.text())
         .then(data => {
-            if(data === "User registered successfully") {
+            if(data === "Logged in") {
                 setLoggedIn(true);
-                console.log("Logged in");
             } else {
                 setShowError(true);
             }

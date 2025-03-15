@@ -1,4 +1,4 @@
-import {DropdownShow} from "../functions/Dropdown.jsx";
+import DropdownShow from "../functions/Dropdown.jsx";
 
 function Navbar() {
     return (

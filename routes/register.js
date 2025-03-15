@@ -26,8 +26,7 @@ router.post("/", async (req, res) => {
         // Insert hashed info to database
         await pool.query("INSERT INTO user VALUES(?, ?, ?)", [username, password, email]);
 
-        const [data] = pool.query("SELECT * FROM user WHERE email = ?", [email]);
-        console.log(data);
+        const [data] = await pool.query("SELECT * FROM user WHERE email = ?", [email]);
 
         if(data) {
             res.send("User registered successfully");
@@ -36,7 +35,6 @@ router.post("/", async (req, res) => {
         }
         
     } catch(err) {
-        console.log(err);
         if (err.code === "ER_DUP_ENTRY") {
             res.status(409).send("User already exists"); // Conflict (For duplicate entries)
         } else if (err.code === "ER_DATA_TOO_LONG") {
