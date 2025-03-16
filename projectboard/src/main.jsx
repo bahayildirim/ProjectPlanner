@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import Router from './html/Router.jsx'
-import Navbar from './html/Navbar.jsx'
+import Navbar from './components/Navbar.jsx'
 import "./css/Navbar.css"
 import "./css/General.css"
 import { QueryClient,  QueryClientProvider} from '@tanstack/react-query'

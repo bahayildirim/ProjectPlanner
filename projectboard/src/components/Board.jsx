@@ -1,6 +1,6 @@
 import { useQueryClient } from "@tanstack/react-query";
-import Card from "../functions/Card.jsx";
-import ToggleVisibility from "./ToggleVisibility.jsx";
+import Card from "./Card.jsx";
+import ToggleVisibility from "../functions/ToggleVisibility.jsx";
 
 function Board({title, renderFunc, index}) {
     const queryClient = useQueryClient();

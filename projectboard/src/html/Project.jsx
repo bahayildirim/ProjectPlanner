@@ -1,11 +1,11 @@
 import "../css/Project.css";
 import { useEffect, useState } from "react";
-import DropdownShow from "../functions/Dropdown.jsx";
 import SessionAuth from "../functions/SessionAuth.jsx";
 import { useNavigate } from "react-router-dom";
-import Board from "../functions/Board.jsx";
-import NewBoard from "../functions/NewBoard.jsx";
+import Board from "../components/Board.jsx";
+import NewBoard from "../components/NewBoard.jsx";
 import GetBoards from "../functions/GetBoards.jsx";
+import ToggleVisibility from "../functions/ToggleVisibility.jsx";
     
 const Project = () => {
     // Create navigate function
@@ -39,16 +39,16 @@ const Project = () => {
         return (
             <div className="project">
                 <aside>
-                    <div className="dropdown">
-                        <button className="league-spartan" onClick={DropdownShow}>Views<i className="fa-solid fa-chevron-down sidebar-top"></i></button>
-                        <ul className="dropdown-content" id="dropdownContent">
+                    <div className="dropdown" id="views">
+                        <button className="league-spartan" onClick={() =>ToggleVisibility("views", "flex")}>Views<i className="fa-solid fa-chevron-down sidebar-top"></i></button>
+                        <ul className="dropdown-content hidden">
                             <li><button className="league-spartan">Board</button></li>
                             <li><button className="league-spartan">Gantt Chart</button></li>
                         </ul>
                     </div> 
-                    <div className="dropdown">
-                        <button className="league-spartan" onClick={DropdownShow}>Filter By<i className="fa-solid fa-chevron-down sidebar-top"></i></button>
-                        <ul className="dropdown-content" id="dropdownContent">
+                    <div className="dropdown" id="tags">
+                        <button className="league-spartan" onClick={() =>ToggleVisibility("tags", "flex")}>Filter By<i className="fa-solid fa-chevron-down sidebar-top"></i></button>
+                        <ul className="dropdown-content hidden">
                             <li><button className="league-spartan"><i className="fa-solid fa-circle"></i>Tag 1</button></li>
                             <li><button className="league-spartan"><i className="fa-solid fa-circle"></i>Tag 2</button></li>
                             <li><button className="league-spartan"><i className="fa-solid fa-circle"></i>Tag 3</button></li>

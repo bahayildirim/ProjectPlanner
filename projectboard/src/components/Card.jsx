@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import GetCards from "./GetCards";
+import GetCards from "../functions/GetCards";
 import Tags from "./Tags";
 
 function Card({title}) {
